@@ -1,3 +1,7 @@
+<h1>Este repositorio es creado y generado como ejemplo para la creación de una API REST usando yii2</h1>
+<br>
+<h2>Se estará actualizando constantemente y quedando como ejemplo para un proyecto de una farmaceutica, en otro repositorio se subirá la base de datos de ejemplo y la explicación de las tablas y relaciónes</h2>
+
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
