@@ -6,8 +6,7 @@ use yii\rest\ActiveController;
 class PaisController extends ActiveController
 {
     public $modelClass = 'app\models\Pais';
-        public function behaviors()
-{
+    public function behaviors(){
     $behaviors = parent::behaviors();
     $behaviors['corsFilter'] = [
         'class' => \yii\filters\Cors::className(),
