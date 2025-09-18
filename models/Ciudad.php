@@ -82,4 +82,14 @@ class Ciudad extends \yii\db\ActiveRecord
         return $this->hasMany(Entidadcomercial::class, ['ent_fkciu_id' => 'ciu_id']);
     }
 
+    public function extraFields()
+    {
+        return[
+
+            "municipioNombre" => function(){
+                return $this -> ciuFkmun -> mun_nombre;
+            }
+        ];
+    }
+
 }

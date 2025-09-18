@@ -95,4 +95,19 @@ class Entidadmedicamento extends \yii\db\ActiveRecord
         return $this->hasOne(Medicamento::class, ['med_id' => 'med_id']);
     }
 
+    public function extraFields()
+    {
+        return[
+            "nombreEntidad"=> function(){
+                return $this -> ent -> ent_nombre;
+            },
+            "estadoEntrega"=> function(){
+                return $this-> entmedFkestado -> test_nombre;
+            },
+            "medicamentoNombre"=> function(){
+                return $this-> med -> med_nombre;
+            }
+        ];
+    }
+
 }

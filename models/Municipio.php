@@ -71,4 +71,13 @@ class Municipio extends \yii\db\ActiveRecord
         return $this->hasOne(Estado::class, ['estd_id' => 'mun_fkestd_id']);
     }
 
+    public function extraFields()
+    {
+        return[
+            "estadoNombre"=> function(){
+                return $this -> munFkestd -> estd_nombre;
+            }
+        ];
+    }
+
 }

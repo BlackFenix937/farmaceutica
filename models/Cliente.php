@@ -93,4 +93,13 @@ class Cliente extends \yii\db\ActiveRecord
         return $this->hasMany(Compra::class, ['cli_id' => 'cli_id']);
     }
 
+    public function extraFields()
+    {
+        return[
+            "ciudadNombre"=> function(){
+                return $this -> cliFkciu -> ciu_nombre;
+            }
+        ];
+    }
+
 }

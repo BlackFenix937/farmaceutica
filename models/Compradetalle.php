@@ -89,4 +89,14 @@ class Compradetalle extends \yii\db\ActiveRecord
         return $this->hasOne(Medicamento::class, ['med_id' => 'med_id']);
     }
 
+    public function extraFields()
+    {
+        return[
+            "medicamentoNombre"=> function(){
+                return $this->med -> med_nombre;
+            }
+
+        ];
+    }
+
 }

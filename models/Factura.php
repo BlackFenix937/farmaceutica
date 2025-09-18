@@ -85,4 +85,16 @@ class Factura extends \yii\db\ActiveRecord
         return $this->hasOne(Pago::class, ['pag_id' => 'pag_id']);
     }
 
+    public function extraFields()
+    {
+        return[
+            "estadoFactura"=> function(){
+                return $this-> facFkestado -> test_nombre;
+            },
+            "montoPago"=> function(){
+                return $this-> pag -> pag_monto;
+            }
+        ];
+    }
+
 }

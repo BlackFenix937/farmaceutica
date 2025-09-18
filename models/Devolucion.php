@@ -80,4 +80,18 @@ class Devolucion extends \yii\db\ActiveRecord
         return $this->hasOne(Tipoestado::class, ['test_id' => 'dev_fkestado_id']);
     }
 
+    public function extraFields()
+    {
+        return[
+        "cantidadMedicamento"=> function(){
+            return $this-> det -> det_cantidad;
+
+
+        },
+        "estadoDevolucion"=> function(){
+            return $this-> devFkestado-> test_nombre;
+        }
+    ];
+}
+
 }

@@ -91,4 +91,17 @@ class Pago extends \yii\db\ActiveRecord
         return $this->hasOne(Tipoestado::class, ['test_id' => 'pag_fkestado_id']);
     }
 
+    public function extraFields()
+    {
+        return[
+            "pagoEstado"=> function(){
+                return $this -> pagFkestado -> test_nombre;
+            },
+            "facturaSolicitada" => function () {
+                return $this-> pag_factura_solicitada == 1 ? "Sí" : "No";
+            }
+
+        ];
+    }
+
 }

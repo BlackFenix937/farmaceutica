@@ -99,4 +99,16 @@ class Compra extends \yii\db\ActiveRecord
         return $this->hasMany(Pago::class, ['comp_id' => 'comp_id']);
     }
 
+    public function extraFields()
+    {
+        return[
+            "clienteNombre"=> function(){
+                return $this-> cli ->cli_nombre;
+            },
+            "estadoCompra"=> function(){
+                return $this -> compFkestado -> test_nombre;
+            }
+        ];
+    }
+
 }
