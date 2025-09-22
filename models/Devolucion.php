@@ -83,10 +83,10 @@ class Devolucion extends \yii\db\ActiveRecord
     public function extraFields()
     {
         return[
-        "cantidadMedicamento"=> function(){
-            return $this-> det -> det_cantidad;
-
-
+        "medicamentoNombre" => function () {
+            return $this->det && $this->det->med
+                ? $this->det->med->med_nombre
+                : null;
         },
         "estadoDevolucion"=> function(){
             return $this-> devFkestado-> test_nombre;

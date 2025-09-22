@@ -91,9 +91,13 @@ class Factura extends \yii\db\ActiveRecord
             "estadoFactura"=> function(){
                 return $this-> facFkestado -> test_nombre;
             },
-            "montoPago"=> function(){
-                return $this-> pag -> pag_monto;
+            "medicamentosFacturados" => function () {
+            if ($this->pag && $this->pag->comp && $this->pag->comp->compradetalles) {
+                return array_map(function($detalle) {
+                    return $detalle->med ? $detalle->med->med_nombre : null;
+                }, $this->pag->comp->compradetalles);
             }
+        }
         ];
     }
 

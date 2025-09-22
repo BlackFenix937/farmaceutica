@@ -99,7 +99,15 @@ class Pago extends \yii\db\ActiveRecord
             },
             "facturaSolicitada" => function () {
                 return $this-> pag_factura_solicitada == 1 ? "Sí" : "No";
+            },
+
+            "medicamentosComprados" => function () {
+            if ($this->comp && $this->comp->compradetalles) {
+                return array_map(function($detalle) {
+                    return $detalle->med ? $detalle->med->med_nombre : null;
+                }, $this->comp->compradetalles);
             }
+        }
 
         ];
     }
