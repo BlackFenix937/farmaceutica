@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'language' => 'es-Es',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -15,15 +16,18 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'ujYLzHekVyhysoVJPBmxMqnC5D9l7FNC',
-             'parsers' => ['application/json' => 'yii\web\JsonParser',
-    ]
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass'   => 'app\models\User',
             'enableAutoLogin' => true,
+            'enableSession'   => false,
+            'loginUrl'        => null
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -44,32 +48,32 @@ $config = [
             ],
         ],
         'db' => $db,
-        
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'ciudad'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'categoriamedicamento'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'componente'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'pais'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'estado'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'cliente'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'compra'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'compradetalle'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'devolucion'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'entidadcomercial'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'entidadmedicamento'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'factura'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'medicamento'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'medicamentocomponente'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'municipio'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'pago'],
-                        ['class' => 'yii\rest\UrlRule', 'controller' => 'tipoestado'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'ciudad'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'categoriamedicamento'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'componente'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'pais'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'estado'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'cliente'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'compra'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'compradetalle'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'devolucion'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'entidadcomercial'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'entidadmedicamento'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'factura'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'medicamento'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'medicamentocomponente'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'municipio'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'pago'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'tipoestado'],
 
             ],
         ],
-        
+
     ],
     'params' => $params,
 ];

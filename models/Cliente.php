@@ -98,7 +98,20 @@ class Cliente extends \yii\db\ActiveRecord
         return[
             "ciudadNombre"=> function(){
                 return $this -> cliFkciu -> ciu_nombre;
-            }
+            },
+
+            "municipioNombre" => function () {
+            return $this->cliFkciu && $this->cliFkciu->ciuFkmun
+                ? $this->cliFkciu->ciuFkmun->mun_nombre
+                : null;
+        },
+        "estadoNombre" => function () {
+            return $this->cliFkciu 
+                && $this->cliFkciu->ciuFkmun 
+                && $this->cliFkciu->ciuFkmun->munFkestd
+                ? $this->cliFkciu->ciuFkmun->munFkestd->estd_nombre
+                : null;
+        }
         ];
     }
 

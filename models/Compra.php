@@ -107,7 +107,18 @@ class Compra extends \yii\db\ActiveRecord
             },
             "estadoCompra"=> function(){
                 return $this -> compFkestado -> test_nombre;
-            }
+            },
+
+            "compraDetalle" => function(){
+                $detalles = $this->compradetalles;
+                
+                $info=[];
+
+                foreach ($detalles as $key => $value) {
+                    $info[]=["cantidad"=>$value->det_cantidad, "producto"=>$value->med->med_nombre, "precio"=>$value->det_precio_unitario, "subtotal"=>$value->det_subtotal];
+                }
+                return $info;
+            } 
         ];
     }
 
