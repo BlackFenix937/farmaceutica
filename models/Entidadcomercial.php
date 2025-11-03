@@ -138,4 +138,16 @@ class Entidadcomercial extends \yii\db\ActiveRecord
     {
         $this->ent_tipo = self::ENT_TIPO_DISTRIBUIDOR;
     }
+
+     public function extraFields()
+    {
+        return[
+            "ciudadNombre"=> function(){
+                return $this -> entFkciu -> ciu_nombre;
+            }
+        ];
+        }
+
+        
+
 }

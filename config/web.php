@@ -53,21 +53,142 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'ciudad'],
+
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'ciudads/buscar/<text:.*>', 'route' => 'ciudad/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'ciudads/total/<text:.*>', 'route' => 'ciudad/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'ciudad',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
+
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'categoriamedicamento'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'componente'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'pais'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'estado'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'cliente'],
+
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'pais/buscar/<text:.*>', 'route' => 'pais/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'pais/total/<text:.*>', 'route' => 'pais/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'pais',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
+
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'estados/buscar/<text:.*>', 'route' => 'estado/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'estados/total/<text:.*>', 'route' => 'estado/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'estado',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
+
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'clientes/buscar/<text:.*>', 'route' => 'cliente/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'clientes/total/<text:.*>', 'route' => 'cliente/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'cliente',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
+
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'compra'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'compradetalle'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'devolucion'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'entidadcomercial'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'entidadmedicamento'],
+
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'entidadcomercials/buscar/<text:.*>', 'route' => 'entidadcomercial/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'entidadcomercials/total/<text:.*>', 'route' => 'entidadcomercial/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'entidadcomercial',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
+
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'entidadmedicamentos/buscar/<text:.*>', 'route' => 'entidadmedicamento/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'entidadmedicamentos/total/<text:.*>', 'route' => 'entidadmedicamento/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'entidadmedicamento',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
+
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'factura'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'medicamento'],
+
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'medicamentos/buscar/<text:.*>', 'route' => 'medicamento/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'medicamentos/total/<text:.*>', 'route' => 'medicamento/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'medicamento',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
+
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'medicamentocomponente'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'municipio'],
+
+
+
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'municipios/buscar/<text:.*>', 'route' => 'municipio/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'municipios/total/<text:.*>', 'route' => 'municipio/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'municipio',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
+
+
+
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'pago'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'tipoestado'],
 

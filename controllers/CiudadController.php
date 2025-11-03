@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use yii\filters\Cors;
+use app\models\Ciudad;
 use yii\rest\ActiveController;
+use yii\data\ActiveDataProvider;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBearerAuth;
 
@@ -33,9 +35,33 @@ class CiudadController extends ActiveController
             'authMethods' => [
                 HttpBearerAuth::className(),
             ],
-            'except' => ['index', 'view']
+            'except' => ['index', 'view', 'total', 'buscar']
         ];
 
         return $behaviors;
+    }
+
+    public function actionTotal($text = "")
+    {
+        $total = Ciudad::find();
+        if ($text != '') {
+            $total = $total->where(['like', new \yii\db\Expression("CONCAT(ciu_nombre, ' ')"), $text]);
+        }
+        $total = $total->count();
+        return $total;
+    }
+
+    public function actionBuscar($text = '')
+    {
+        $consulta = Ciudad::find()->where(['like', new \yii\db\Expression("CONCAT(ciu_nombre, ' ')"), $text]);
+
+        $ciudades = new ActiveDataProvider([
+            'query' => $consulta,
+            'pagination' => [
+                'pageSize' => 20 // Número de resultados por página
+            ],
+        ]);
+
+        return $ciudades->getModels();
     }
 }
