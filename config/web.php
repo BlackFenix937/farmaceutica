@@ -194,6 +194,22 @@ $config = [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'pago'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'tipoestado'],
 
+
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'permisos/user/<text:.*>', 'route' => 'permiso/user'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'permiso',
+                    'tokens' => [
+                        '{id}'  => '<id:\\d[\\d,]*>',
+                        '{rol}' => '<rol:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET lista-permisos/{rol}' => 'lista-permisos/{rol}'
+                    ],
+                ],
+
+
+
             ],
         ],
 
