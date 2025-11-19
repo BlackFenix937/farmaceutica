@@ -119,7 +119,22 @@ $config = [
                     ],
                 ],
 
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'compra'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'compras/buscar/<text:.*>', 'route' => 'compra/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'compras/total/<text:.*>', 'route' => 'compra/total'],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'compra',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
+
+
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'compradetalle'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'devolucion'],
 

@@ -118,7 +118,17 @@ class Compra extends \yii\db\ActiveRecord
                     $info[]=["cantidad"=>$value->det_cantidad, "producto"=>$value->med->med_nombre, "precio"=>$value->det_precio_unitario, "subtotal"=>$value->det_subtotal];
                 }
                 return $info;
-            } 
+            },
+
+            "medicamentoNombre" => function() {
+            $detalles = $this->compradetalles;
+            $nombres = [];
+            foreach ($detalles as $detalle) {
+                $nombres[] = $detalle->med->med_nombre;
+            }
+            return $nombres; // Devuelve un array con todos los nombres de medicamentos
+        },
+            
         ];
     }
 
