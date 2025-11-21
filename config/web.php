@@ -134,9 +134,22 @@ $config = [
                     ],
                 ],
 
-
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'compradetalle'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'devolucion'],
+
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'devolucions/buscar/<text:.*>', 'route'   => 'devolucion/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'devolucions/total/<text:.*>', 'route'   => 'devolucion/total'],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'devolucion',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
 
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'entidadcomercials/buscar/<text:.*>', 'route' => 'entidadcomercial/buscar'],
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'entidadcomercials/total/<text:.*>', 'route' => 'entidadcomercial/total'],
@@ -168,7 +181,20 @@ $config = [
                     ],
                 ],
 
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'factura'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'facturas/buscar/<text:.*>', 'route'   => 'factura/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'facturas/total/<text:.*>', 'route'   => 'factura/total'],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'factura',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
 
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'medicamentos/buscar/<text:.*>', 'route' => 'medicamento/buscar'],
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'medicamentos/total/<text:.*>', 'route' => 'medicamento/total'],
@@ -187,8 +213,6 @@ $config = [
 
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'medicamentocomponente'],
 
-
-
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'municipios/buscar/<text:.*>', 'route' => 'municipio/buscar'],
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'municipios/total/<text:.*>', 'route' => 'municipio/total'],
                 [
@@ -204,11 +228,8 @@ $config = [
                     ],
                 ],
 
-
-
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'pago'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'tipoestado'],
-
 
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'permisos/user/<text:.*>', 'route' => 'permiso/user'],
                 [
@@ -222,8 +243,6 @@ $config = [
                         'GET lista-permisos/{rol}' => 'lista-permisos/{rol}'
                     ],
                 ],
-
-
 
             ],
         ],

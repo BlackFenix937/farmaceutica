@@ -41,7 +41,7 @@ class MunicipioController extends ActiveController
         return $behaviors;
     }
 
-       public function actionTotal($text = "")
+    public function actionTotal($text = "")
     {
         $total = Municipio::find();
         if ($text != '') {
@@ -64,5 +64,4 @@ class MunicipioController extends ActiveController
 
         return $municipios->getModels();
     }
-
 }

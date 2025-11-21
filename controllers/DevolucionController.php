@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use yii\filters\Cors;
+use app\models\Devolucion;
 use yii\rest\ActiveController;
+use yii\data\ActiveDataProvider;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBearerAuth;
 
@@ -33,9 +35,37 @@ class DevolucionController extends ActiveController
             'authMethods' => [
                 HttpBearerAuth::className(),
             ],
-            'except' => ['index', 'view']
+            'except' => ['index', 'view', 'total', 'buscar']
         ];
 
         return $behaviors;
+    }
+
+    public function actionTotal($text = "")
+    {
+        $total = Devolucion::find();
+        if ($text != '') {
+            $total = $total->where(['like', new \yii\db\Expression("CONCAT(comp_id, ' ')"), $text]);
+        }
+        $total = $total->count();
+        return $total;
+    }
+
+    public function actionBuscar($text = '')
+    {
+        $consulta = Devolucion::find()
+            ->joinWith(['det.med' => function ($query) use ($text) {
+                $query->andWhere(['like', 'medicamento.med_nombre', $text]);
+            }])
+            ->distinct(); // Evita duplicados si un medicamento produce múltiples relaciones
+
+        $devoluciones = new \yii\data\ActiveDataProvider([
+            'query' => $consulta,
+            'pagination' => [
+                'pageSize' => 20
+            ],
+        ]);
+
+        return $devoluciones->getModels();
     }
 }
