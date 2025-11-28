@@ -69,8 +69,35 @@ $config = [
                     ],
                 ],
 
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'categoriamedicamento'],
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'componente'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'categoriamedicamentos/buscar/<text:.*>', 'route' => 'categoriamedicamento/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'categoriamedicamentos/total/<text:.*>', 'route' => 'categoriamedicamento/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'categoriamedicamento',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
+
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'componentes/buscar/<text:.*>', 'route' => 'componente/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'componentes/total/<text:.*>', 'route' => 'componente/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'componente',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
 
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'pais/buscar/<text:.*>', 'route' => 'pais/buscar'],
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'pais/total/<text:.*>', 'route' => 'pais/total'],
@@ -211,7 +238,20 @@ $config = [
                     ],
                 ],
 
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'medicamentocomponente'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'medicamentocomponentes/buscar/<text:.*>', 'route' => 'medicamentocomponente/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'medicamentocomponentes/total/<text:.*>', 'route' => 'medicamentocomponente/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'medicamentocomponente',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
 
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'municipios/buscar/<text:.*>', 'route' => 'municipio/buscar'],
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'municipios/total/<text:.*>', 'route' => 'municipio/total'],
@@ -228,7 +268,21 @@ $config = [
                     ],
                 ],
 
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'pago'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'pagos/buscar/<text:.*>', 'route' => 'pago/buscar'],
+                ['class' => 'yii\web\UrlRule', 'pattern' => 'pagos/total/<text:.*>', 'route' => 'pago/total'],
+                [
+                    'class'      => 'yii\rest\UrlRule',
+                    'controller' => 'pago',
+                    'tokens' => [
+                        '{id}'   => '<id:\\d[\\d,]*>',
+                        '{text}' => '<text:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                        'GET buscar/{text}' => 'buscar',
+                        'GET total/{text}'  => 'total'
+                    ],
+                ],
+
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'tipoestado'],
 
                 ['class' => 'yii\web\UrlRule', 'pattern' => 'permisos/user/<text:.*>', 'route' => 'permiso/user'],

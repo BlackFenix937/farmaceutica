@@ -27,6 +27,11 @@ class Tipoestado extends \yii\db\ActiveRecord
     const TEST_NOMBRE_EN_PROCESO_DE_COMPRA = 'En proceso de compra';
     const TEST_NOMBRE_ENTREGADO = 'Entregado';
     const TEST_NOMBRE_EN_CAMINO = 'En camino';
+    const TEST_NOMBRE_EN_PROCESO_DE_DEVOLUCION = 'En proceso de devolucion';
+    const TEST_NOMBRE_EN_PROCESO_DE_PAGO = 'En proceso de pago';
+    const TEST_NOMBRE_PAGADO = 'Pagado';
+    const TEST_NOMBRE_FACTURADO = 'Facturado';
+
 
     /**
      * {@inheritdoc}
@@ -122,6 +127,11 @@ class Tipoestado extends \yii\db\ActiveRecord
             self::TEST_NOMBRE_EN_PROCESO_DE_COMPRA => 'En proceso de compra',
             self::TEST_NOMBRE_ENTREGADO => 'Entregado',
             self::TEST_NOMBRE_EN_CAMINO => 'En camino',
+            self::TEST_NOMBRE_EN_PROCESO_DE_DEVOLUCION => 'En proceso de devolucion',
+            self::TEST_NOMBRE_EN_PROCESO_DE_PAGO => 'En proceso de pago',
+            self::TEST_NOMBRE_PAGADO => 'Pagado',
+            self::TEST_NOMBRE_FACTURADO => 'Facturado',
+
         ];
     }
 
@@ -188,6 +198,19 @@ class Tipoestado extends \yii\db\ActiveRecord
     /**
      * @return bool
      */
+    public function isTestNombreEnProcesoDeDevolucion()
+    {
+        return $this->test_nombre === self::TEST_NOMBRE_EN_PROCESO_DE_DEVOLUCION;
+    }
+
+    public function setTestNombreToEnProcesoDeDevolucion()
+    {
+        $this->test_nombre = self::TEST_NOMBRE_EN_PROCESO_DE_DEVOLUCION;
+    }
+
+    /**
+     * @return bool
+     */
     public function isTestNombreEnCamino()
     {
         return $this->test_nombre === self::TEST_NOMBRE_EN_CAMINO;
@@ -196,5 +219,44 @@ class Tipoestado extends \yii\db\ActiveRecord
     public function setTestNombreToEnCamino()
     {
         $this->test_nombre = self::TEST_NOMBRE_EN_CAMINO;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTestNombreEnProcesoDePago()
+    {
+        return $this->test_nombre === self::TEST_NOMBRE_EN_PROCESO_DE_PAGO;
+    }
+
+    public function setTestNombreToEnProcesoDePago()
+    {
+        $this->test_nombre = self::TEST_NOMBRE_EN_PROCESO_DE_PAGO;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTestNombrePagado()
+    {
+        return $this->test_nombre === self::TEST_NOMBRE_PAGADO;
+    }
+
+    public function setTestNombreToPagado()
+    {
+        $this->test_nombre = self::TEST_NOMBRE_PAGADO;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTestNombreFacturado()
+    {
+        return $this->test_nombre === self::TEST_NOMBRE_FACTURADO;
+    }
+
+    public function setTestNombreToFacturado()
+    {
+        $this->test_nombre = self::TEST_NOMBRE_FACTURADO;
     }
 }
