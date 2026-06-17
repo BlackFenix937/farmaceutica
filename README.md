@@ -1,6 +1,278 @@
-<h1>Este repositorio es creado y generado como ejemplo para la creación de una API REST usando yii2</h1>
-<br>
-<h2>Se estará actualizando constantemente y quedando como ejemplo para un proyecto de una farmaceutica, en otro repositorio se subirá la base de datos de ejemplo y la explicación de las tablas y relaciónes</h2>
+# FarmaX API (farmaceutica)
+
+Backend desarrollado con Yii2 Framework para el sistema de gestión farmacéutica FarmaX.
+
+Este proyecto proporciona la lógica de negocio, autenticación, gestión de usuarios, administración de medicamentos y acceso a la base de datos utilizada por la aplicación móvil AppFarmacia.
+
+---
+
+# Arquitectura del Sistema
+
+```text
+AppFarmacia (Ionic + Angular)
+        │
+        │ HTTP / JSON
+        ▼
+FarmaX API (Yii2)
+        │
+        ▼
+      MySQL
+```
+
+---
+
+# Descripción General
+
+FarmaX API centraliza la gestión de información farmacéutica mediante una serie de controladores, modelos y servicios desarrollados en Yii2.
+
+Entre las funcionalidades principales se encuentran:
+
+* Gestión de usuarios.
+* Autenticación y autorización.
+* Administración de medicamentos.
+* Gestión de componentes farmacológicos.
+* Gestión de categorías de medicamentos.
+* Administración de clientes.
+* Gestión de compras.
+* Gestión de pagos.
+* Gestión de devoluciones.
+* Administración de entidades comerciales.
+* Gestión geográfica (países, estados, municipios y ciudades).
+* Exposición de servicios para consumo desde aplicaciones externas.
+
+---
+
+# Tecnologías Utilizadas
+
+## Backend
+
+* PHP 7.4+
+* Yii2 Framework 2.0
+* Bootstrap 5
+* Symfony Mailer
+
+## Gestión de Usuarios y Roles
+
+* Webvimark User Management
+
+## Base de Datos
+
+* MySQL
+
+---
+
+# Requisitos Previos
+
+Antes de ejecutar el proyecto, asegúrate de tener instalado:
+
+* PHP 7.4 o superior
+* Composer
+* MySQL
+* Git
+
+Verificar instalación:
+
+```bash
+php -v
+composer -V
+mysql --version
+```
+
+---
+
+# Clonar el Proyecto
+
+```bash
+git clone https://github.com/BlackFenix937/farmaceutica.git
+```
+
+Ingresar al directorio:
+
+```bash
+cd farmaceutica
+```
+
+---
+
+# Instalar Dependencias
+
+Instalar dependencias mediante Composer:
+
+```bash
+composer install
+```
+
+---
+
+# Configuración de Base de Datos
+
+La conexión a la base de datos se encuentra en:
+
+```text
+config/db.php
+```
+
+Configuración por defecto:
+
+```php
+return [
+    'class' => 'yii\db\Connection',
+    'dsn' => 'mysql:host=localhost;dbname=app_farmaceutica',
+    'username' => 'root',
+    'password' => '',
+    'charset' => 'utf8',
+];
+```
+
+Modificar los parámetros según la configuración local del servidor MySQL.
+
+---
+
+# Crear la Base de Datos
+
+Crear una base de datos llamada:
+
+```sql
+CREATE DATABASE app_farmaceutica;
+```
+
+Posteriormente importar el archivo SQL correspondiente al proyecto.
+
+---
+
+# Ejecutar el Servidor
+
+Iniciar el servidor de desarrollo de Yii2:
+
+```bash
+php yii serve
+```
+
+Por defecto el sistema estará disponible en:
+
+```text
+http://localhost:8080
+```
+
+---
+
+# Conexión con AppFarmacia
+
+La aplicación móvil AppFarmacia consume esta API mediante la siguiente configuración:
+
+```typescript
+export const environment = {
+  production: true,
+  apiUrl: "http://localhost:8080/"
+};
+```
+
+Archivo:
+
+```text
+src/environments/environment.prod.ts
+```
+
+Si AppFarmacia se ejecuta desde un dispositivo físico, se recomienda utilizar la dirección IP local del servidor.
+
+Ejemplo:
+
+```typescript
+apiUrl: "http://192.168.1.100:8080/"
+```
+
+---
+
+# Estructura del Proyecto
+
+```text
+farmaceutica/
+│
+├── assets/
+├── commands/
+├── config/
+├── controllers/
+├── mail/
+├── models/
+├── runtime/
+├── tests/
+├── vagrant/
+├── views/
+├── web/
+├── widgets/
+│
+├── composer.json
+├── composer.lock
+├── docker-compose.yml
+├── yii
+└── yii.bat
+```
+
+---
+
+# Gestión de Usuarios y Roles
+
+El proyecto incorpora:
+
+* Autenticación de usuarios.
+* Gestión de permisos.
+* Control de acceso basado en roles.
+* Administración centralizada de usuarios.
+
+Implementado mediante:
+
+```text
+webvimark/module-user-management
+```
+
+---
+
+# Funcionalidades Principales
+
+* CRUD de medicamentos.
+* CRUD de clientes.
+* CRUD de compras.
+* CRUD de pagos.
+* CRUD de devoluciones.
+* CRUD de componentes farmacológicos.
+* CRUD de categorías de medicamentos.
+* CRUD de entidades comerciales.
+* Gestión geográfica completa.
+* Servicios consumidos por AppFarmacia.
+
+---
+
+# Pruebas
+
+El proyecto incluye configuración para Codeception.
+
+Ejecutar pruebas:
+
+```bash
+vendor/bin/codecept run
+```
+
+---
+
+# Licencia
+
+Proyecto desarrollado con fines académicos y de gestión farmacéutica.
+
+---
+
+# Autor
+
+**BlackFenix937** || **Andy de Jesús González Alcázar**
+
+Backend del ecosistema FarmaX desarrollado con Yii2 Framework y MySQL.
+
+# Documentación Oficial de Yii2
+
+> Esta aplicación fue desarrollada sobre la plantilla oficial Yii2 Basic Project Template. La documentación original puede consultarse en:
+>
+> https://www.yiiframework.com/
+
+<summary>Ver documentación original de Yii2</summary>
 
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
@@ -235,3 +507,5 @@ vendor/bin/codecept run functional,unit --coverage --coverage-html --coverage-xm
 ```
 
 You can see code coverage output under the `tests/_output` directory.
+
+</details>
